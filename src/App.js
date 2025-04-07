@@ -17,7 +17,7 @@ export default function App() {
     }
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/recommend', {
+      const response = await axios.post('https://yumcraft-backend-mkfv.onrender.com/recommend', {
         ingredients: ingredients.split(',').map((i) => i.trim()),
       });
       setRecipes(response.data);
@@ -53,7 +53,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen text-gray-900 pt-20"
+      className="min-h-screen text-gray-900"
       style={{
         backgroundImage: "url('/background.png')",
         backgroundSize: 'cover',
@@ -62,13 +62,14 @@ export default function App() {
     >
       <Navbar savedCount={savedRecipes.length} />
       <Toaster position="top-right" />
-      <div className="bg-black bg-opacity-50 min-h-screen p-6">
+
+      <div className="bg-black bg-opacity-50 min-h-screen px-6 pt-28 pb-10">
         <div className="max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex gap-2 mb-6"
+            className="flex flex-col sm:flex-row gap-2 mb-6"
           >
             <input
               type="text"
